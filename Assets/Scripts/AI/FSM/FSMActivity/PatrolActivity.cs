@@ -24,8 +24,14 @@ public class PatrolActivity : Activity
         float x = PatrolPoints.GetTargetPointDir().x;
         float y = PatrolPoints.GetTargetPointDir().y;
 
+        /*
+         * 
         Vector2 pos = RigidBody.position + new Vector2(x * speed * Time.deltaTime, y * speed * Time.deltaTime );
         RigidBody.MovePosition(pos);
+         */
+        Vector2 pos = stateMachine.gameObject.transform.position +
+                      new Vector3(x * speed * Time.deltaTime, y * speed * Time.deltaTime);
+        stateMachine.gameObject.transform.position = pos;
     }
 
     public override void Exit(BaseStateMachine stateMachine)

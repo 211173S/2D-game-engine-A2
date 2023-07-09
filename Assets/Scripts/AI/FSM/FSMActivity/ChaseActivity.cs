@@ -20,8 +20,12 @@ public class ChaseActivity : Activity
         var SpriteRenderer = stateMachine.GetComponent<SpriteRenderer>();
 
         Vector2 dir = (target.transform.position - stateMachine.transform.position).normalized;
-        RigidBody.velocity = new Vector2(dir.x * speed /** Time.deltaTime*/, RigidBody.velocity.y  * speed/* * Time.deltaTime*/);
-        SpriteRenderer.flipX = (dir.x > 0) ? true : false;
+        //RigidBody.velocity = new Vector2(dir.x * speed * Time.deltaTime, dir.y  * speed * Time.deltaTime);
+        Vector3 offset = new Vector2(dir.x * speed * Time.deltaTime, dir.y * speed * Time.deltaTime);
+        Vector2 pos = stateMachine.transform.position +
+                      offset;
+        stateMachine.gameObject.transform.position = pos;
+        SpriteRenderer.flipX = (offset.x > 0) ? true : false;
     }
 
     public override void Exit(BaseStateMachine stateMachine)

@@ -5,7 +5,8 @@ using UnityEngine;
 public class BaseStateMachine : MonoBehaviour
 {
     [SerializeField] private BaseState _initialState;
-    [SerializeField] public BaseState CurrentState { get; set; }
+    public BaseState CurrentState { get; set; }
+    [SerializeField] private BaseState CStateViewer;
     private void Awake()
     {
         CurrentState = _initialState; // the state we pass in is the current state
@@ -19,5 +20,6 @@ public class BaseStateMachine : MonoBehaviour
     void Update()
     {
         CurrentState.Execute(this);
+        CStateViewer = CurrentState;
     }
 }

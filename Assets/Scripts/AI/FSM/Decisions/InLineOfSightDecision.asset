@@ -15,4 +15,4 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 1
-  distThreshold: 2
+  distThreshold: 3
